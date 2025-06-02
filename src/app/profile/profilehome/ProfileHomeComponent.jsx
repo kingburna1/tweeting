@@ -13,7 +13,7 @@ const ProfileHomeComponent = () => {
       setLikesCount((prev) => (liked ? prev - 1 : prev + 1));
     };
   return (
-    <div className='w-full  h-[600px] overflow-y-auto '>
+    <div className='w-full h-fit  md:h-[600px] overflow-y-auto '>
 
       <div className='w-[400px] md:w-[600px] py-4 px-2 fixed z-20 bg-background flex justify-between'>
         <div className="flex gap-3 py-4">

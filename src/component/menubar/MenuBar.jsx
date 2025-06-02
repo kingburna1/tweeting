@@ -72,7 +72,9 @@ const MenuBar = () => {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
+        <DropdownMenuItem>
+        <Link href="/">Home</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuItem disabled></DropdownMenuItem>
         <DropdownMenuSeparator />
