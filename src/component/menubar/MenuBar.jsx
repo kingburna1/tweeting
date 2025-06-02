@@ -22,6 +22,7 @@ import {
     UserButton,
   } from '@clerk/nextjs'
 import { Menu, MenuIcon, UserRound, Mail, Bell, Bookmark, Ellipsis, ListTodo  } from 'lucide-react';
+import Link from 'next/link';
 
 const MenuBar = () => {
   return (
@@ -34,7 +35,8 @@ const MenuBar = () => {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            Profile
+            <Link href="/profile">Profile</Link>
+            
             <DropdownMenuShortcut><UserRound /></DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
