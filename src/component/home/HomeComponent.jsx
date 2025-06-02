@@ -26,11 +26,11 @@ const HomeComponent = () => {
    }
    
   return (
-    <div className='w-full  h-[600px] overflow-y-auto '>
+    <div className='w-full h-[fit] md:h-[600px] overflow-y-auto '>
 
    <div className='flex justify-between w-[380px] md:w-[600px] py-4 px-2 fixed z-20 bg-background  '>
       <div>Home</div>
-      <div className='flex gap-2'>
+      <div className='flex gap-2 justify-center align-center'>
          <div className='md:hidden '><MenuBar/></div>
          <ModeToggle/>
          {/* <Sparkles color='blue'/> */}
