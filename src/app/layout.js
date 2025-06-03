@@ -30,7 +30,7 @@ export const metadata = {
     shortcut: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcNrL1Kq27iR5mDkQQmFbSlw_HJ9Rv4EYDLw&s",
   },
   openGraph: {
-    title: "Pokémon Explorer - Web App",
+    title: "tweet clone - Web App",
     description:
       "Browse, search, and make new friends characters with real-time data from the BurnaAPI. Beautiful, fast, and responsive tweet clone app built with Next.js.",
     url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcNrL1Kq27iR5mDkQQmFbSlw_HJ9Rv4EYDLw&s", // update with your actual URL
