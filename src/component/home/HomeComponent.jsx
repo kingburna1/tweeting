@@ -28,8 +28,8 @@ const HomeComponent = () => {
   return (
     <div className='w-full h-[fit] md:h-[600px] overflow-y-auto '>
      
-     <div className="fixed z-20 bg-background w-[500px] md:w-[600px] ">
-   <div className='flex justify-between w-[300px] md:w-[600px] py-4 px-2  bg-background  '>
+     <div className="fixed z-20 bg-background w-[500px] md:w-full ">
+   <div className='flex justify-between w-[300px] md:w-full py-4 px-2  bg-background  '>
       <div>Home</div>
       <div className='flex gap-2 justify-center align-center'>
          <div className='md:hidden '><MenuBar/></div>
