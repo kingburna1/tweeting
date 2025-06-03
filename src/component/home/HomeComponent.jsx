@@ -27,14 +27,16 @@ const HomeComponent = () => {
    
   return (
     <div className='w-full h-[fit] md:h-[600px] overflow-y-auto '>
-
-   <div className='flex justify-between w-[380px] md:w-[600px] py-4 px-2 fixed z-20 bg-background  '>
+     
+     <div className="fixed z-20 bg-background w-[500px] md:w-[600px] ">
+   <div className='flex justify-between w-[300px] md:w-[600px] py-4 px-2  bg-background  '>
       <div>Home</div>
       <div className='flex gap-2 justify-center align-center'>
          <div className='md:hidden '><MenuBar/></div>
          <ModeToggle/>
          {/* <Sparkles color='blue'/> */}
          </div>
+    </div>
     </div>
 
        <div className='w-full h-fit  border-t-1 border-b-1 py-2 mt-20'>
@@ -45,7 +47,7 @@ const HomeComponent = () => {
         </div>
 
         <div className='flex justify-between px-2 mt-4'>
-            <div className='flex gap-4 ml-20'>
+            <div className='flex gap-4  md:ml-20'>
             <ImageUp  size={20} color='blue'/>
             <AiOutlineFileGif size={20}  color='blue'/>
             <AlignJustify size={20}   color='blue'/>
@@ -55,7 +57,7 @@ const HomeComponent = () => {
 
             </div>
             <div>
-                <button className="bg-blue-400 p-2 border rounded-2xl font-bold text-white">Tweet</button>
+                <button className="bg-blue-400 p-2 border text-xs md:text-md rounded-2xl font-bold text-white">Tweet</button>
             </div>
 
         </div>

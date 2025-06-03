@@ -15,7 +15,9 @@ const ProfileHomeComponent = () => {
   return (
     <div className='w-full h-fit  md:h-[600px] overflow-y-auto '>
 
-      <div className='w-[400px] md:w-[600px] py-6 md:py-4 px-2 fixed z-20 bg-background flex justify-between'>
+        <div className="md:w-full bg-background w-[500px] fixed z-20 bg-background">
+
+      <div className='w-[300px] md:w-[600px] py-6 md:py-4 px-2  flex justify-between'>
         <div className="flex gap-3 py-4">
             <div>
             <ArrowLeft color='blue'/>
@@ -37,6 +39,8 @@ const ProfileHomeComponent = () => {
         </div>
       
           </div>
+          </div>
+
 
         <div className='relative mt-30'>
             <div className='w-full'>
