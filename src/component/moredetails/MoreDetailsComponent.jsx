@@ -3,7 +3,7 @@ import React from 'react';
 
 const MoreDetailsComponent = () => {
   return (
-    <div className='w-full  h-[600px] overflow-y-auto  '>
+    <div className='w-full h-fit  md:h-[600px] overflow-y-auto  '>
 
            <div className='py-4  fixed w-full z-20 mx-1 bg-background '>
                 <div className='flex  border rounded-xl w-[300px] h-fit p-2'>

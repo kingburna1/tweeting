@@ -8,10 +8,10 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-   <div>
+   <div className="h-[500px]">
     <div className="grid md:grid-cols-4 px-8">
 
-      <div  className="hidden md:block">
+      <div  className="hidden md:block sticky top-0">
         
 
          <div>

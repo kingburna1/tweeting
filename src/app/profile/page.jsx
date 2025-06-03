@@ -12,7 +12,7 @@ export default function page() {
     <div>
         <div className='grid md:grid-cols-4 px-8' >
 
-            <div className="hidden md:block" >
+            <div className="hidden md:block sticky top-0" >
                  <div>
                           {/* <ProfileNavbarComponent/> */}
                        </div>

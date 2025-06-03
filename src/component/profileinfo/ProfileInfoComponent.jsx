@@ -5,7 +5,7 @@ import React from 'react';
 const ProfileInfoComponent = () => {
   return (
 
-    <div className="w-full h-[500px]">
+    <div className="w-full h-[500px] ">
 
 
 
