@@ -3,10 +3,20 @@ import HomeComponent from "@/component/home/HomeComponent";
 import MoreDetailsComponent from "@/component/moredetails/MoreDetailsComponent";
 // import NavbarComponent from "@/component/navbar/NavbarComponent";
 import ProfileInfoComponent from "@/component/profileinfo/ProfileInfoComponent";
+
+import {auth, currentUser} from '@clerk/nextjs/server'
 // import ProfileNavbarComponent from "@/component/profilenavbar/ProfileNavbarComponent";
 import Image from "next/image";
 
-export default function Home() {
+import { redirect, RedirectType } from 'next/navigation'
+   
+
+export default async function Home() {
+  const { userId } = await auth()
+  if(!userId){
+    redirect('/signIn', RedirectType.replace)
+  }
+
   return (
    <div className="h-[500px]">
     <div className="grid md:grid-cols-4 px-8">

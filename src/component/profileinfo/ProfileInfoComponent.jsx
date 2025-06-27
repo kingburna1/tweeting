@@ -1,6 +1,14 @@
 import { Bell, BookmarkCheck, CircleEllipsis, Ellipsis, Hash, Home, LayoutList, Mail, UserRound, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 const ProfileInfoComponent = () => {
   return (
@@ -60,13 +68,28 @@ const ProfileInfoComponent = () => {
         <div className='flex  justify-center align-center gap-4  mr-5'>
             <div><CircleEllipsis /></div>
             <div className='font-bold'>More</div>
+             
         </div>
 
 
 
+
+
+
+        <div className='flex  justify-center align-center gap-4  mr-5'>
+
+              
+        <SignedOut>
+                          <SignInButton />
+                          <SignUpButton />
+                        </SignedOut>
+                        <SignedIn>
+                          <UserButton />
+                        </SignedIn>
+                        </div>
         
 
-
+         
 
 
 

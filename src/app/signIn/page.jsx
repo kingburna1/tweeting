@@ -4,6 +4,7 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import React from 'react'
+import { SignInButton } from '@clerk/nextjs'
 import { useState } from "react";
 import Link from 'next/link';
 
@@ -25,9 +26,18 @@ import Link from 'next/link';
         {/* <h2 className="text-3xl font-semibold mb-6 text-black">Sign in</h2> */}
 
         <div className='flex justify-between gap-4 mb-6 text-gray-600'>
-            <FaGoogle  color="blue"/>
-           <FaFacebookF color="blue"/>
-           <FaInstagram color="blue" />
+        <SignInButton mode='redirect' redirect_url='/'>
+          <button><FaGoogle  color="blue"/></button>
+          </SignInButton>
+            
+          <SignInButton mode='redirect' redirect_url='/'>
+            <button><FaFacebookF color="blue"/></button>
+            </SignInButton>
+           
+            <SignInButton mode='redirect' redirect_url='/'>
+           <button><FaInstagram color="blue" /></button>
+           </SignInButton>
+           
         </div>
 
         <form className="space-y-5">

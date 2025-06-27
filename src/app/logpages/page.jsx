@@ -1,8 +1,12 @@
 import SignInComponent from '@/component/signin/singInComponent';
 import Link from 'next/link';
+import { SignUpButton } from '@clerk/nextjs'
 import React from 'react';
 
+
 const Page = () => {
+ 
+  
     return (
         <div className="md:flex  gap-2  h-screen p-5">
 
@@ -21,7 +25,7 @@ const Page = () => {
 
 
                   <h1 className='text-blue-400 font-bold text-xl md:text-3xl mt-30 text-center'>
-                    welcome to twitter modify
+                    Welcome to twitter modify
                   </h1>
 
                   <p className="text-black text-center p-3">meet over 20 trillion of people everyday and get  updated news on stuffs meet over 20 trillion of people everyday and get  updated news on stuffs</p>
@@ -34,7 +38,9 @@ const Page = () => {
                     </div>
 
                     <div className="text-black text-xs md:text-md">
-                        SignUp with apple
+                       <SignUpButton  mode='redirect' redirect_url='/'>
+                       <button> SignUp with apple</button>
+                        </SignUpButton>
                     
                     </div>
                     
@@ -42,13 +48,17 @@ const Page = () => {
                      {/* button 2 */}
                      <div className="text-white flex justify-center align-center gap-2 border border-blue-400 w-1/2 mx-auto rounded-md p-2 mb-3">
                    <div>
+                       
                     <img  className="w-4 md:w-6" src="googleLogo.webp" alt="google logo" />
-                    
+                   
                     </div>
 
                     <div className="text-black  text-xs md:text-md">
+                       <SignUpButton  mode='redirect' redirect_url='/'>
+                       <button>
                         signup with Google
-                    
+                        </button>
+                        </SignUpButton>
                     </div>
                     
                    </div>
@@ -60,8 +70,11 @@ const Page = () => {
                     </div>
 
                     <div className="text-black  text-xs md:text-md">
+                       <SignUpButton mode='redirect' redirect_url='/'>
+                       <button>
                         SignUp with Facebook
-                    
+                        </button>
+                        </SignUpButton>
                     </div>
                     
                    </div>
