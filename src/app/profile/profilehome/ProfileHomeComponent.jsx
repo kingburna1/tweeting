@@ -15,9 +15,9 @@ const ProfileHomeComponent = () => {
   return (
     <div className='w-full h-fit  md:h-[600px] overflow-y-auto '>
 
-        <div className="md:w-full bg-background w-[500px] fixed z-20 bg-background">
+        <div className="md:w-full bg-background w-[500px] fixed z-20 ">
 
-      <div className='w-[300px] md:w-[600px] py-6 md:py-4 px-2  flex justify-between'>
+      <div className='w-[300px] md:w-[550px] py-6 md:py-4 px-2  flex justify-between'>
         <div className="flex gap-3 py-4">
             <div>
             <ArrowLeft color='blue'/>
@@ -32,7 +32,7 @@ const ProfileHomeComponent = () => {
 
         <div>
         <div className='flex gap-2 justify-center align-center'>
-         <div className='md:hidden '><MenuBar/></div>
+         <div className=''><MenuBar/></div>
          <ModeToggle/>
          {/* <Sparkles color='blue'/> */}
          </div>
