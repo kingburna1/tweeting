@@ -31,7 +31,7 @@ const HomeComponent = () => {
      <div className="fixed z-20 bg-background w-[500px] md:w-full ">
    <div className='flex justify-between w-[390px] md:w-[530px] bg-background py-4 px-2'>
       <div>Home</div>
-      <div className='flex gap-2 justify-center align-center'>
+      <div className='flex gap-2 items-center justify-center'>
          <div className=''><MenuBar/></div>
          <ModeToggle/>
          {/* <Sparkles color='blue'/> */}
@@ -42,7 +42,7 @@ const HomeComponent = () => {
        <div className='w-full h-fit  border-t-1 border-b-1 py-2 mt-20'>
 
         <div className='flex px-5 gap-2'> 
-            <div><img className='w-15 h-15 rounded-full' src="wansi2.jpg" alt="photo i made" /></div>
+            <div><img className='w-15 h-15 rounded-full ' src="wansi2.jpg" alt="photo i made" /></div>
             <div><input className='outline-none' type="text"  placeholder='what is happening'/></div>
         </div>
 
@@ -68,7 +68,7 @@ const HomeComponent = () => {
         
        <div className='flex gap-2 px-2 py py-2'>
         <div>
-            <img className='w-15 h-15 rounded-full' src="/wansi3.jpg" alt="photo i made" />
+            <img className='w-15 h-15 rounded-full object-fill' src="/wansi3.jpg" alt="photo i made" />
         </div>
 
         <div>
@@ -83,7 +83,7 @@ const HomeComponent = () => {
         </div>
 
          <div className='px-3 pl-17'> 
-            <img className='h-[200px] w-full object-fit  rounded-2xl' src="spaceman.jpg" alt="photo i made" />
+            <img className='h-[200px] w-full object-fill  rounded-2xl' src="spaceman.jpg" alt="photo i made" />
 
          <div className='flex justify-between w-full mt-2'>
 

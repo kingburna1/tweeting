@@ -85,7 +85,7 @@ const ProfileHomeComponent = () => {
               <p className='text-gray-500'>9 Tweet</p>
             </div>
           </div>
-          <div className='flex gap-2 justify-center align-center'>
+          <div className='flex gap-2 items-center justify-center'>
             <MenuBar />
             <ModeToggle />
           </div>
@@ -94,13 +94,13 @@ const ProfileHomeComponent = () => {
 
       <div className='relative mt-30'>
         <div className='w-full'>
-          <img className="w-full h-[230px] object-cover" src={profile.coverImage} alt="cover" />
+          <img className="w-full h-[230px] object-fit" src={profile.coverImage} alt="cover" />
         </div>
 
         <div className='flex justify-between py-2 px-2'>
           <div>
             <div className='absolute top-40 left-5'>
-              <img className="w-30 h-30 rounded-full" src={profile.profileImage} alt="profile" />
+              <img className="w-30 h-30 rounded-full object-covern" src={profile.profileImage} alt="profile" />
             </div>
             <div className='mt-10'>
               <h2 className='font-bold'>{profile.name}</h2>
@@ -132,23 +132,34 @@ const ProfileHomeComponent = () => {
 
       {/* Edit Profile Modal */}
       {isEditing && (
-        <div className="fixed top-0 left-0 w-full h-full bg-blue-400 bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl w-[300px] md:w-[400px]">
+        <div className="fixed top-0 left-0 w-full h-full bg-blue-400 bg-opacity-40 flex items-center justify-center z-50 p-10">
+          <div className="bg-white p-6 rounded-xl w-[300px] md:w-[400px] shadow-lg">
+            <div className='flex justify-between'>
             <h2 className='text-xl font-bold mb-4'>Edit Profile</h2>
+            <img className="w-5 h-5 rounded-full object-fit" src="/twitterLogo.png" alt="profile" />
+            </div>
             <form onSubmit={handleUpdate} className="flex flex-col gap-3">
-              <input name="name" type="text" defaultValue={profile.name} className="border p-2 rounded" />
-              <input name="username" type="text" defaultValue={profile.username} className="border p-2 rounded" />
-              <input name="bio" type="text" defaultValue={profile.bio} className="border p-2 rounded" />
-              <input name="location" type="text" defaultValue={profile.location} className="border p-2 rounded" />
-
+            <div className='flex jusstify-center item-center mb-3'>
+              <img className="w-20 h-20 rounded-full object-cover" src={profile.profileImage} alt="profile" />
               <div>
-                <label className="block mb-1 text-sm font-semibold">Profile Picture</label>
-                <input type="file" accept="image/*" onChange={handleProfileImageChange} />
+                <label className="block mb-1 text-sm font-semibold">Change Profile Picture</label>
+                <input type="file" accept="image/*" onChange={handleProfileImageChange} placeholder='upload profile pictuter' />
               </div>
+            </div>
 
-              <div>
-                <label className="block mb-1 text-sm font-semibold">Cover Photo</label>
-                <input type="file" accept="image/*" onChange={handleCoverImageChange} />
+               <label className="block mb-1 text-sm font-semibold">Update Name</label>
+              <input name="name" type="text" defaultValue={profile.name} className="border p-2 rounded" placeholder='Enter Name' />
+              <input name="username" type="text" defaultValue={profile.username} className="border p-2 rounded" placeholder="Enter User Name" />
+              
+              <input name="bio" type="text" defaultValue={profile.bio} className="border p-2 rounded" placeholder='Enter Bio' />
+              
+              <input name="location" type="text" defaultValue={profile.location} className="border p-2 rounded" placeholder='Enter Location' />
+
+           
+
+              <div >
+                <label className="block mb-1 text-sm font-semibold">Change Cover Photo</label>
+                <input type="file" accept="image/*" onChange={handleCoverImageChange} placeholder='Upload cover photo' />
               </div>
 
               <div className="flex justify-between mt-4">
