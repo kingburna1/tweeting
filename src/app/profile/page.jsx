@@ -37,7 +37,7 @@ export default function page() {
 
                  {/* <DetailsNavbarComponent/> */}
 
-        <div>
+        <div className="mt-5">
           <ProfileDetailsComponent/>
         </div> 
             </div>

@@ -28,6 +28,7 @@ export const GET = async () => {
 
   export const POST = async (request) => {
     try {
+      // const response = await axios.post('/api/users', formData);
         // connect to the database
         await connectDB();
         // get the data from the request body
@@ -50,6 +51,8 @@ export const GET = async () => {
         
         // create a new user instance
         
+        console.log("Incoming user data:", userData);
+
         const newUser = new User(userData);
         // save the user to the database
         await newUser.save();
@@ -57,11 +60,14 @@ export const GET = async () => {
         return new NextResponse(JSON.stringify(newUser), { 
             status: 201 
         });
-    }   catch (error) {
+    }  catch (error) {
+            console.error("User creation failed:", error);
         return new NextResponse(
             // return an error message if the user creation fails
-            console.log(error),
-            JSON.stringify({ error: 'Failed to create user, try again.', error }),
+            JSON.stringify({
+              error: 'Failed to create user, try again.',
+              details: error.message,
+            }),
             { status: 500 }
         );
     }

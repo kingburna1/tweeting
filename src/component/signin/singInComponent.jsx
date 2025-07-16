@@ -1,52 +1,73 @@
 "use client";
 import { Eye } from "lucide-react";
 import React, { useState } from "react";
+import { SignInButton } from "@clerk/nextjs";
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Page = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [Password, setPassword] = useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [DateOfBirth, setDateOfBirth] = useState("");
 
   const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    Name: "",
+    Email: "",
+    Password: "",
+    ConfirmPassword: "",
   });
 
   const validate = () => {
     const newErrors = {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      Name: "",
+      Email: "",
+      Password: "",
+      ConfirmPassword: "",
+      Phone:"",
     };
 
-    if (/\d/.test(name)) {
-      newErrors.name = "Name must not contain numbers.";
+    if (/\d/.test(Name)) {
+      newErrors.Name = "Name must not contain numbers.";
+    }
+    if (!DateOfBirth) {
+      newErrors.DateOfBirth = "Date of birth is required.";
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Invalid email format.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(Email)) {
+      newErrors.Email = "Invalid email format.";
     }
+
+    if (!/^[0-9]+$/.test(Phone)) {
+      newErrors.Phone = "Phone number should contain only digits.";
+    } else if (Phone.length < 9) {
+      newErrors.Phone = "Phone number is too short.";
+    }
+    
 
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
-    if (!passwordRegex.test(password)) {
-      newErrors.password =
+    if (!passwordRegex.test(Password)) {
+      newErrors.Password =
         "Password must include uppercase, lowercase, number, and symbol.";
     }
 
-    if (password !== confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match.";
+    if (Password !== ConfirmPassword) {
+      newErrors.ConfirmPassword = "Passwords do not match.";
+      setIsLoading(false);
+     toast.error("Please fill all fields");
+      return;
     }
 
     setErrors(newErrors);
     return Object.values(newErrors).every((err) => err === "");
+
+    
   };
 
   const handleNameChange = (e) => {
@@ -54,7 +75,7 @@ const Page = () => {
     setName(value);
     setErrors((prev) => ({
       ...prev,
-      name: /\d/.test(value) ? "Name must not contain numbers." : "",
+      Name: /\d/.test(value) ? "Name must not contain numbers." : "",
     }));
   };
 
@@ -63,11 +84,24 @@ const Page = () => {
     setEmail(value);
     setErrors((prev) => ({
       ...prev,
-      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+      Email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
         ? ""
         : "Invalid email format.",
     }));
   };
+     
+       const handlePhoneChange = (e) => {
+  const value = e.target.value;
+  setPhone(value);
+
+  setErrors((prev) => ({
+    ...prev,
+    Phone: /^[\d\s()+-]+$/.test(value)
+      ? ""
+      : "Invalid phone number format.",
+  }));
+};
+
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
@@ -76,7 +110,7 @@ const Page = () => {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
     setErrors((prev) => ({
       ...prev,
-      password: passwordRegex.test(value)
+      Password: passwordRegex.test(value)
         ? ""
         : "Password must include uppercase, lowercase, number, and symbol.",
     }));
@@ -87,18 +121,47 @@ const Page = () => {
     setConfirmPassword(value);
     setErrors((prev) => ({
       ...prev,
-      confirmPassword:
-        value === password ? "" : "Passwords do not match.",
+      ConfirmPassword:
+        value === Password ? "" : "Passwords do not match.",
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      alert("creating your account dont close this screen!");
+      alert("creating your account don't close this screen!");
       // Submit form logic here
     }
   };
+
+   const [isLoading, setIsLoading] = useState(false);
+  
+    const Payload = {
+      Name,
+      Email,
+      Password,
+      Phone,
+      DateOfBirth,
+      ConfirmPassword
+    }
+  
+    const handleSignup = async () => {
+          console.log("Sign Up", Payload);
+          setIsLoading(true);
+          validate();
+
+          await axios.post(`http://localhost:3000/api/users`,Payload).then(result=>{
+            toast.success("Registered Successfully")
+            console.log(result.data);
+            setIsLoading(false);
+            }).catch(error => {
+            setIsLoading(false);
+            toast.error("Registration Failed. Please try again.");
+            console.log(error)
+            })
+    }
+
+  
 
  
 
@@ -111,18 +174,53 @@ const Page = () => {
         <h2 className="text-3xl font-semibold mb-6 text-black">Sign up</h2>
 
         <form className="space-y-5" onSubmit={handleSubmit}>
+            <ToastContainer position="top-center" />
           {/* Name */}
+          <div className="flex justify-between gap-4">
+
           <div>
             <label className="block mb-1 text-sm text-black">Name</label>
             <input
               type="text"
               placeholder="king burna"
-              value={name}
+              value={Name}
               onChange={handleNameChange}
               className="w-full text-[15px] px-4 py-2 rounded-md bg-white/30 text-black placeholder-gray-600 border border-white/40 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
             />
-            {errors.name && (
-              <p className="text-sm text-red-600 mt-1">{errors.name}</p>
+            {errors.Name && (
+              <p className="text-sm text-red-600 mt-1">{errors.Name}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block mb-1 text-sm text-black">Phone</label>
+            <input
+              type="text"
+              placeholder="678503056"
+              value={Phone}
+              onChange={handlePhoneChange}
+              className="w-full text-[15px] px-4 py-2 rounded-md bg-white/30 text-black placeholder-gray-600 border border-white/40 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
+            />
+            {errors.Phone && (
+              <p className="text-sm text-red-600 mt-1">{errors.Phone}</p>
+            )}
+          </div>
+
+
+          </div>
+
+          <div className="flex justify-between gap-4">
+          {/* Date of Birth */}
+          <div>
+            <label className="block mb-1 text-sm text-black">Date of Birth</label>
+            <input
+              type="date"
+              value={DateOfBirth}
+              onChange={(e) => setDateOfBirth(e.target.value)}
+              className="w-full text-[15px] px-4 py-2 rounded-md bg-white/30 text-black placeholder-gray-600 border border-white/40 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
+            />
+            {errors.DateOfBirth && (
+              <p className="text-sm text-red-600 mt-1">{errors.DateOfBirth}</p>
             )}
           </div>
 
@@ -132,15 +230,17 @@ const Page = () => {
             <input
               type="email"
               placeholder="user@email.com"
-              value={email}
+              value={Email}
               onChange={handleEmailChange}
               className="w-full text-[15px] px-4 py-2 rounded-md bg-white/30 text-black placeholder-gray-600 border border-white/40 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
             />
-            {errors.email && (
-              <p className="text-sm text-red-600 mt-1">{errors.email}</p>
+            {errors.Email && (
+              <p className="text-sm text-red-600 mt-1">{errors.Email}</p>
             )}
           </div>
+             
 
+          </div>
           {/* Password */}
           <div>
             <label className="block mb-1 text-sm text-black">Password</label>
@@ -148,7 +248,7 @@ const Page = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
-                value={password}
+                value={Password}
                 onChange={handlePasswordChange}
                 className="w-full text-[14px] px-4 py-2 rounded-md bg-white/30 text-black placeholder-gray-600 border border-white/40 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
               />
@@ -161,8 +261,8 @@ const Page = () => {
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
-            {errors.password && (
-              <p className="text-sm text-red-600 mt-1">{errors.password}</p>
+            {errors.Password && (
+              <p className="text-sm text-red-600 mt-1">{errors.Password}</p>
             )}
           </div>
 
@@ -173,7 +273,7 @@ const Page = () => {
               <input
                 type={showConfirm ? "text" : "password"}
                 placeholder="Re-enter your password"
-                value={confirmPassword}
+                value={ConfirmPassword}
                 onChange={handleConfirmPasswordChange}
                 className="w-full px-4 py-2 rounded-md bg-white/30 text-black placeholder-gray-600 border border-white/40 focus:outline-none focus:ring-2 focus:ring-[#1DA1F2]"
               />
@@ -186,18 +286,20 @@ const Page = () => {
                 {showConfirm ? "Hide" : "Show"}
               </button>
             </div>
-            {errors.confirmPassword && (
+            {errors.ConfirmPassword && (
               <p className="text-sm text-red-600 mt-1">
-                {errors.confirmPassword}
+                {errors.ConfirmPassword}
               </p>
             )}
           </div>
 
           <button
-            type="submit"
+          onClick={() => handleSignup()}
+            type="button"
             className="w-full bg-[#1DA1F2] transition text-white py-2 rounded-md font-medium cursor-pointer"
           >
-            Sign up
+
+           {isLoading ? "Registering.....": "Sign Up"}
           </button>
         </form>
 

@@ -19,8 +19,8 @@ const ProfileDetailsComponent = () => {
 
 
     <div className='w-full  mt-20 flex flex-col justify-center p-4'>
-         <div className="bg-gray-200 w-full h-fit p-2 rounded-2xl ">
-        <h3 className='font-bold py-4'>who to follow</h3>
+         <div className="bg-gray-300 w-full h-fit p-2 rounded-2xl ">
+        <h3 className='font-bold py-4 text-black'>who to follow</h3>
             
 
             
@@ -32,8 +32,8 @@ const ProfileDetailsComponent = () => {
                </div>
                
                <div>
-                   <h3 className='font-bold'>jerome bell</h3>
-                   <h5 className='text-gray-400'>@jagabanpopi</h5>
+                   <h3 className='font-bold text-black'>jerome bell</h3>
+                   <h5 className='text-gray-800'>@jagabanpopi</h5>
                </div>
                
                </div>
@@ -52,8 +52,8 @@ const ProfileDetailsComponent = () => {
                </div>
                
                <div>
-                   <h3 className='font-bold'>jerome bell</h3>
-                   <h5 className='text-gray-400'>@jagabanpopi</h5>
+                   <h3 className='font-bold text-black'>jerome bell</h3>
+                   <h5 className=' text-gray-800'>@jagabanpopi</h5>
                </div>
                
                </div>
@@ -72,14 +72,14 @@ const ProfileDetailsComponent = () => {
 
       </div>
 
-      <div className='bg-gray-200 w-full h-fit p-1 rounded-2xl mt-2'>
-            <h3 className='font-bold py-4'>What's happening</h3>
+      <div className='bg-gray-300 w-full h-fit p-1 rounded-2xl mt-2'>
+            <h3 className='font-bold py-4 text-black'>What's happening</h3>
 
             <div className='border-t-1 border-b-1 p-2 border-gray-400 grid grid-cols-3 gap-2'>
                 <div className='col-span-2'>
-                    <p className="text-gray-500 text-xs">COVID19. Last night</p>
-                    <p>Keep moving boy. I know that you have a wanderful manager i named Detez </p>
-                    <p> trending with <span className='text-blue-400'>#convid19</span></p>
+                    <p className="text-gray-800 text-xs">COVID19. Last night</p>
+                    <p className="text-gray-800">Keep moving boy. I know that you have a wanderful manager i named Detez </p>
+                    <p className="text-gray-800"> trending with <span className='text-blue-400'>#convid19</span></p>
                 </div>
                 <div>
                     <img className='w-15 h-15 rounded-xl' src="man3.jpg" alt="photo i made" />
@@ -89,8 +89,8 @@ const ProfileDetailsComponent = () => {
             <div className=' border-b-1 p-2 border-gray-400 grid grid-cols-3 gap-2'>
                 <div className='col-span-2'>
                     <p className="text-gray-500 text-xs">US News . 4h ago</p>
-                    <p>"Trum" likely refers to Traffic and Road Use Mana </p>
-                    <p> trending with <span className='text-blue-400'>#convid19</span></p>
+                    <p className="text-gray-800">"Trum" likely refers to Traffic and Road Use Mana </p>
+                    <p className="text-gray-800"> trending with <span className='text-blue-400'>#convid19</span></p>
                 </div>
                 <div>
                     <img className='w-15 h-15 rounded-xl' src="spaceman.jpg" alt="photo i made" />
@@ -99,9 +99,9 @@ const ProfileDetailsComponent = () => {
 
             <div className=' border-b-1 p-2 border-gray-400 grid grid-cols-3 gap-2'>
                 <div className='col-span-2'>
-                    <p className="text-gray-500 text-xs">india. 1h ago</p>
-                    <p>"Trum" likely refers to Traffic and Road Use Mana </p>
-                    <p> trending with <span className='text-blue-400'>#convid19</span></p>
+                    <p className="text-black text-xs">india. 1h ago</p>
+                    <p className="text-gray-800">"Trum" likely refers to Traffic and Road Use Mana </p>
+                    <p className="text-gray-800"> trending with <span className='text-blue-400'>#convid19</span></p>
                 </div>
                 <div>
                     <img className='w-15 h-15 rounded-xl' src="vercel.svg" alt="photo i made" />
@@ -114,7 +114,7 @@ const ProfileDetailsComponent = () => {
          
         </div>
 
-        <p className='text-xs text-gray-500'>
+        <p className='text-xs text-gray-800'>
       This Privacy Policy is meant to help you understand what information we collect, why we collect it, and how you can update, manage, export, and delete your 
       </p>
       

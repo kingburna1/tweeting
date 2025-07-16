@@ -1,11 +1,34 @@
+   "use client"
 import SignInComponent from '@/component/signin/singInComponent';
 import Link from 'next/link';
 import { SignUpButton } from '@clerk/nextjs'
 import React from 'react';
 
 
+
 const Page = () => {
- 
+      
+  // const [isLoading, setIsLoading] = React.useState(false);
+
+  // const [Name, setName]= React.useState('');
+
+  // const [Email,setEmail] = React.useState('');
+
+  // const [Password, setPassword] = React.useState('');
+
+  // const [confirmPassword ,setConfirmPassword] = React.useState('');
+
+  // const payload = {
+  //   Name,
+  //   Email,
+  //   Password,
+  //   confirmPassword
+  // }
+
+  // const handleSignup = async () => {
+  //       console.log("payload", payload);
+  //       setIsLoading(true);
+  // }
   
     return (
         <div className="md:flex  gap-2  h-screen p-5">

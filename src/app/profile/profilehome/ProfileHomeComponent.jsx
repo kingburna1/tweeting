@@ -76,8 +76,8 @@ const ProfileHomeComponent = () => {
   return (
     <div className='w-full h-fit md:h-[600px] overflow-y-auto'>
 
-      <div className="md:w-full bg-background w-[500px] fixed z-20">
-        <div className='w-[300px] md:w-[550px] py-6 md:py-4 px-2 flex justify-between'>
+      <div className="w-full bg-background  fixed z-20">
+        <div className='w-[480px] md:w-[550px] py-6 md:py-4 px-2 flex justify-between'>
           <div className="flex gap-3 py-4">
             <ArrowLeft color='blue' />
             <div>
@@ -93,14 +93,14 @@ const ProfileHomeComponent = () => {
       </div>
 
       <div className='relative mt-30'>
-        <div className='w-full'>
-          <img className="w-full h-[230px] object-fit" src={profile.coverImage} alt="cover" />
+        <div className='w-full h-full'>
+          <img className="w-full h-[230px] object-cover" src={profile.coverImage} alt="cover" />
         </div>
 
         <div className='flex justify-between py-2 px-2'>
           <div>
             <div className='absolute top-40 left-5'>
-              <img className="w-30 h-30 rounded-full object-covern" src={profile.profileImage} alt="profile" />
+              <img className="w-30 h-30 rounded-full object-cover" src={profile.profileImage} alt="profile" />
             </div>
             <div className='mt-10'>
               <h2 className='font-bold'>{profile.name}</h2>
@@ -185,7 +185,7 @@ const ProfileHomeComponent = () => {
         </div>
 
         <div className='px-3 pl-17'>
-          <img className='h-[200px] w-full object-fit rounded-2xl' src="spaceman.jpg" alt="post" />
+          <img className='h-[200px] w-full object-cover rounded-2xl' src="spaceman.jpg" alt="post" />
 
           <div className='flex justify-between w-full mt-2'>
             <div className='flex gap-2'><MessageCircle /><p>12</p></div>
