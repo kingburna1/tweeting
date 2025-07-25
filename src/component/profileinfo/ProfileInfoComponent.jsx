@@ -11,6 +11,8 @@ import {
 } from '@clerk/nextjs'
 
 const ProfileInfoComponent = () => {
+
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="max-w-md mx-auto flex  flex-col  items-center justify-center "> {/* <-- Added this wrapper for centering */}
       <div className=" h-[500px] flex items-center flex-col align-center">
@@ -84,8 +86,8 @@ const ProfileInfoComponent = () => {
               </div>
 
               <div>
-                <h3 className='font-bold'>jerome bell</h3>
-                <h5 className='text-gray-400'>@jagabanpopi</h5>
+                <h3 className='font-bold'>{user.Name}</h3>
+                <h5 className='text-gray-400'>{user?.Name?.toLowerCase().trim().replace(/\s+/g, '')}</h5>
               </div>
             </div>
 

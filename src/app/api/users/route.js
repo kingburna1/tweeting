@@ -1,5 +1,6 @@
 import connectDB from "@/db/connectDB";
 import User from "@/model/User";
+import bcrypt from "bcryptjs";
 // import connectDB from "../../../db/connectDB";
 // import User from "../../../model/User";
 
@@ -34,7 +35,7 @@ export const GET = async () => {
         // get the data from the request body
         const userData = await request.json();
         // check if the user already exists
-        const { Email, Phone } = userData;
+        const { Email, Phone,Password } = userData;
 
       //  check if email or phone already exist in database
       const existingUser = await User.findOne({
@@ -48,12 +49,16 @@ export const GET = async () => {
           }),{status: 409}
         )
       };
+
+        // hash the password before saving
+        const hashedPassword = bcrypt.hashSync(Password, 10);
+        
         
         // create a new user instance
         
         console.log("Incoming user data:", userData);
 
-        const newUser = new User(userData);
+        const newUser = new User({...userData, Password: hashedPassword });
         // save the user to the database
         await newUser.save();
         // return the created user as a JSON response

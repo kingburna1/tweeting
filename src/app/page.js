@@ -1,21 +1,32 @@
+"use client"
 // import DetailsNavbarComponent from "@/component/detailsnavbar/DetailsNavbarComponent";
 import HomeComponent from "@/component/home/HomeComponent";
 import MoreDetailsComponent from "@/component/moredetails/MoreDetailsComponent";
 // import NavbarComponent from "@/component/navbar/NavbarComponent";
 import ProfileInfoComponent from "@/component/profileinfo/ProfileInfoComponent";
 
-import {auth, currentUser} from '@clerk/nextjs/server'
+// import {auth, currentUser} from '@clerk/nextjs/server'
 // import ProfileNavbarComponent from "@/component/profilenavbar/ProfileNavbarComponent";
 import Image from "next/image";
 
 import { redirect, RedirectType } from 'next/navigation'
+
+
    
 
-export default async function Home() {
-  const { userId } = await auth()
-  if(!userId){
-    redirect('/signIn', RedirectType.replace)
-  }
+export default function Home() {
+ 
+
+ // const { userId } = await auth()
+ const user = JSON.parse(localStorage.getItem("user"));
+    
+//  const handleLogout = () => {
+//    localStorage.removeItem("user")
+//  }
+
+ if (!user) {
+   redirect('/signIn')
+ }
 
   return (
    <div className="h-[500px]">

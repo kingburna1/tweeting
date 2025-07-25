@@ -9,6 +9,16 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
+import ReactQueryProvider from "@/component/ReactQuerryProvider"
+// import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,12 +67,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+ 
+
   return (
+   
     <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+  
       >
+         <ReactQueryProvider>
          <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -71,8 +86,12 @@ export default function RootLayout({ children }) {
           >
         {children}
         </ThemeProvider>
+        </ReactQueryProvider>
       </body>
     </html>
     </ClerkProvider>
+    
+
+   
   );
 }

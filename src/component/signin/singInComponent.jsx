@@ -4,10 +4,13 @@ import React, { useState } from "react";
 import { SignInButton } from "@clerk/nextjs";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
+import {redirect, useRouter} from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+
 
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
@@ -23,7 +26,7 @@ const Page = () => {
     ConfirmPassword: "",
   });
 
-  const validate = () => {
+  const validate = () => { 
     const newErrors = {
       Name: "",
       Email: "",
@@ -150,10 +153,12 @@ const Page = () => {
           setIsLoading(true);
           validate();
 
+         
           await axios.post(`http://localhost:3000/api/users`,Payload).then(result=>{
             toast.success("Registered Successfully")
             console.log(result.data);
             setIsLoading(false);
+            router.push("/signIn")
             }).catch(error => {
             setIsLoading(false);
             toast.error("Registration Failed. Please try again.");

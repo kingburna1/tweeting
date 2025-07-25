@@ -37,9 +37,9 @@ export const POST = async (request) => {
 
     // Configuration
     cloudinary.config({ 
-        cloud_name: 'dmmlneha2', 
-        api_key: '762233378483431', 
-        api_secret: 'dvScjAAfsiOLVlIpIZPoFpgn6WQ' // Click 'View API Keys' above to copy your API secret
+        cloud_name: 'dqyuvcfvb', 
+        api_key: '641941537321154', 
+        api_secret: 'Gl98ncS4GPaMT2iMtp4oqhumFec' // Click 'View API Keys' above to copy your API secret
     });
     
     // Upload an image

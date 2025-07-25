@@ -5,6 +5,8 @@ import { LuCalendarSearch } from "react-icons/lu";
 import React, { useState } from 'react';
 import MenuBar from '../menubar/MenuBar';
 import { ModeToggle } from '../toggle/ModeToggle';
+import MakePost from '../makePost/MakePost';
+import CardContainer from '../CardContainer/CardContainer';
 
 
 const HomeComponent = () => {
@@ -25,6 +27,20 @@ const HomeComponent = () => {
        setUnlikesCount((prev) => (unliked ? prev - 1 : prev + 1));
    }
    
+   
+   const handleLogout = () => {
+      localStorage.removeItem("user")
+    }
+
+   
+       // const { userId } = await auth()
+ const user = JSON.parse(localStorage.getItem("user"));
+
+ if (!user) {
+   redirect('/signIn')
+ }
+
+   
   return (
     <div className='w-full h-fit  md:h-[600px] overflow-y-auto '>
      
@@ -33,13 +49,18 @@ const HomeComponent = () => {
       <div>Home</div>
       <div className='flex gap-2 items-center justify-center'>
          <div className=''><MenuBar/></div>
-         <ModeToggle/>
+         {/* <ModeToggle/> */}
+         <button onClick={handleLogout} className='flex text-red-500 gap-3 font-medium hover:text-primary transition duration-3s'>
+          Sign out
+            </button>
          {/* <Sparkles color='blue'/> */}
          </div>
     </div>
     </div>
 
-       <div className='w-full h-fit  border-t-1 border-b-1 py-2 mt-20'>
+       <div className="mt-20"> <MakePost/></div>
+       
+       {/* <div className='w-full h-fit  border-t-1 border-b-1 py-2 mt-20'>
 
         <div className='flex px-5 gap-2'> 
             <div><img className='w-15 h-15 rounded-full ' src="wansi2.jpg" alt="photo i made" /></div>
@@ -62,139 +83,10 @@ const HomeComponent = () => {
 
         </div>
           
-       </div>
+       </div> */}
 
-       <div className='w-full border-b-2 py-2 '>
-        
-       <div className='flex gap-2 px-2 py py-2'>
-        <div>
-            <img className='w-15 h-15 rounded-full object-fill' src="/wansi3.jpg" alt="photo i made" />
-        </div>
-
-        <div>
-            <div className='flex gap-2 '>
-               <h3 className='font-bold'>davon lane <span className='text-gray-500'>@macelobobinaone</span>  .</h3>
-                <p className='text-gray-400'>  23s</p>
-            </div>
-           
-            <h5 className=''>is this big enough for you</h5>
-        </div>
-
-        </div>
-
-         <div className='px-3 pl-17'> 
-            <img className='h-[200px] w-full object-fill  rounded-2xl' src="spaceman.jpg" alt="photo i made" />
-
-         <div className='flex justify-between w-full mt-2'>
-
-         <div className='flex gap-2'>
-         <div><MessageCircle /></div>
-             <div>
-                <p>12</p>
-             </div>
-            
-         </div>
-           
-
-            <div className='flex gap-2'>
-            <div><Repeat2 /></div>
-             <div>
-                <p>28</p>
-             </div>
-            
-            </div>
-            <div className='flex gap-2'>
-             <div  onClick={toggleLike}><Heart  className={liked ? 'text-red-600' : 'text-blue-700'}/></div>
-              <div>
-                 <p>{likesCount}</p>
-              </div>
-             
-             
-             </div>
-
-
-            <div className="flex gap-2">
-               <div><Download /></div>
-             <div>
-                <p>10</p>
-             </div>  
-            
-            </div>
-            
-         </div>
-
-         </div>
-
-
-       </div>
-
-
-       <div className='w-full border-b-2 py-2 '>
-        
-        <div className='flex gap-2 px-2 py py-2'>
-         <div>
-             <img className='w-15 h-15 rounded-full' src="/mansi.jpg" alt="photo i made" />
-         </div>
- 
-         <div>
-             <div className='flex gap-2 '>
-                <h3 className='font-bold'>oracle prophet  <span className='text-gray-500'>@prophetdanie</span>  .</h3>
-                 <p className='text-gray-400'>  30m</p>
-             </div>
-            
-             <h5 className=''>are you ready for your big date?..</h5>
-         </div>
- 
-         </div>
- 
-          <div className='px-3 pl-17'> 
-             <img className='h-[200px] w-full object-cover  rounded-2xl' src="date1.jpg" alt="photo i made" />
- 
-          <div className='flex justify-between w-full mt-2'>
- 
-          <div className='flex gap-2'>
-          <div><MessageCircle /></div>
-              <div>
-                 <p>12</p>
-              </div>
-             
-          </div>
-            
- 
-             <div className='flex gap-2'>
-             <div><Repeat2 /></div>
-              <div>
-                 <p>28</p>
-              </div>
-             
-             </div>
- 
- 
-             <div className='flex gap-2'>
-             <div  onClick={toggleUnlike}><Heart  className={unliked ? 'text-red-600' : 'text-blue-700'}/></div>
-              <div>
-                 <p>{unlikesCount}</p>
-              </div>
-             
-             
-             </div>
- 
- 
-             <div className="flex gap-2">
-                <div><Download /></div>
-              <div>
-                 <p>10</p>
-              </div>  
-             
-             </div>
-             
-          </div>
- 
-          </div>
- 
- 
-        </div>
- 
+     
+         <CardContainer/>
 
 
 

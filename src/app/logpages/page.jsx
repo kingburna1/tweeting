@@ -3,10 +3,13 @@ import SignInComponent from '@/component/signin/singInComponent';
 import Link from 'next/link';
 import { SignUpButton } from '@clerk/nextjs'
 import React from 'react';
+import {redirect, useRouter} from "next/navigation";
+
 
 
 
 const Page = () => {
+  const router = useRouter();
       
   // const [isLoading, setIsLoading] = React.useState(false);
 
@@ -31,7 +34,7 @@ const Page = () => {
   // }
   
     return (
-        <div className="md:flex  gap-2  h-screen p-5">
+        <div className="md:flex  gap-2  h-screen p-5 ">
 
             <div className="bg-gray-300 h-fit w-full">
                    <SignInComponent/>
